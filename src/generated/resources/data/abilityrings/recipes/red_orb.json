@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "I#I",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "#": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "abilityrings:red_orb"
+  }
+}

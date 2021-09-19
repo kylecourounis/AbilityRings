@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "abilityrings:item/flight_ring"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "abilityrings:flying": 1.0
+      },
+      "model": "abilityrings:item/flight_ring_on"
+    }
+  ]
+}

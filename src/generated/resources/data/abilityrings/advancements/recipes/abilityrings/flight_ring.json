@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "abilityrings:flight_ring"
+    ]
+  },
+  "criteria": {
+    "has_blue_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "abilityrings:blue_orb"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "abilityrings:flight_ring"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_blue_orb",
+      "has_the_recipe"
+    ]
+  ]
+}

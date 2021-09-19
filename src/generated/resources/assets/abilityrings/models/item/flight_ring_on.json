@@ -1,0 +1,6 @@
+{
+  "parent": "abilityrings:item/flight_ring",
+  "textures": {
+    "layer0": "abilityrings:item/flight_ring_on"
+  }
+}
