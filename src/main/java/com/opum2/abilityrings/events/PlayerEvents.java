@@ -13,19 +13,19 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MOD_ID)
 public class PlayerEvents {
-	@SubscribeEvent
-	public static void onLivingJump(LivingEvent.LivingJumpEvent event) {
-		LivingEntity entity = event.getEntityLiving();
+    @SubscribeEvent
+    public static void onLivingJump(LivingEvent.LivingJumpEvent event) {
+        LivingEntity entity = event.getEntityLiving();
 
-		if (entity instanceof Player) {
-			Player player = (Player)entity;
-			SwiftnessRingItem item = (SwiftnessRingItem)ModItems.SWIFTNESS_RING.get();
-			
-			if (Inventory.isHotbarSlot(player.getInventory().findSlotMatchingItem(item.getDefaultInstance()))) {
-				if (!player.isCrouching()) {
-					player.lerpMotion(player.getDeltaMovement().x, player.getDeltaMovement().y + 0.35D, player.getDeltaMovement().z);
-				}
-			}
-		}
-	}
+        if (entity instanceof Player) {
+            Player player = (Player)entity;
+            SwiftnessRingItem item = (SwiftnessRingItem)ModItems.SWIFTNESS_RING.get();
+
+            if (Inventory.isHotbarSlot(player.getInventory().findSlotMatchingItem(item.getDefaultInstance()))) {
+                if (!player.isCrouching()) {
+                    player.lerpMotion(player.getDeltaMovement().x, player.getDeltaMovement().y + 0.35D, player.getDeltaMovement().z);
+                }
+            }
+        }
+    }
 }

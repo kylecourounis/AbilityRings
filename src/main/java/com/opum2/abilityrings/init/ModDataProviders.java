@@ -14,20 +14,20 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MOD_ID, bus = Bus.MOD)
 public class ModDataProviders {
-	@SubscribeEvent
-	public static void registerDataProviders(final GatherDataEvent event) {
-		final DataGenerator dataGenerator = event.getGenerator();
-		final ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-		
-		if (event.includeClient()) {
-			dataGenerator.addProvider(new AbilityRingsLangProvider(dataGenerator));
-			
-			final AbilityRingsItemModelProvider itemModelProvider = new AbilityRingsItemModelProvider(dataGenerator, existingFileHelper);
-			dataGenerator.addProvider(itemModelProvider);
-		}
-		
-		if (event.includeServer()) {
-			dataGenerator.addProvider(new AbilityRingsRecipeProvider(dataGenerator));
-		}
-	}
+    @SubscribeEvent
+    public static void registerDataProviders(final GatherDataEvent event) {
+        final DataGenerator dataGenerator = event.getGenerator();
+        final ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+
+        if (event.includeClient()) {
+            dataGenerator.addProvider(new AbilityRingsLangProvider(dataGenerator));
+
+            final AbilityRingsItemModelProvider itemModelProvider = new AbilityRingsItemModelProvider(dataGenerator, existingFileHelper);
+            dataGenerator.addProvider(itemModelProvider);
+        }
+        
+        if (event.includeServer()) {
+            dataGenerator.addProvider(new AbilityRingsRecipeProvider(dataGenerator));
+        }
+    }
 }

@@ -18,25 +18,25 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(ModInfo.MOD_ID)
 public class AbilityRings {
     public static final Logger LOGGER = LogManager.getLogger();
-    
-	public AbilityRings() {
-		ConfigHandler.register(ModLoadingContext.get());
-		
-    	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-    	
-		ModItems.init(bus);
-		
+
+    public AbilityRings() {
+        ConfigHandler.register(ModLoadingContext.get());
+
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.init(bus);
+
         bus.addListener(this::commonSetup);
-    	bus.addListener(this::clientSetup);
+        bus.addListener(this::clientSetup);
     }
-    
+
     @OnlyIn(Dist.CLIENT)
     private void clientSetup(final FMLClientSetupEvent event) {
-		event.enqueueWork(new Runnable() {
-			public void run() {
-				ModItems.registerItemProperties();
-			}
-		});
+        event.enqueueWork(new Runnable() {
+            public void run() {
+                ModItems.registerItemProperties();
+            }
+        });
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {}
