@@ -50,49 +50,51 @@ public class FlightRingItem extends ModRingItem {
         if (entity instanceof Player) {
             Player player = (Player)entity;
 
-            CompoundTag tag = stack.getOrCreateTag();
-            this.consumptionItem = tag.getInt(CONSUMPTION_ITEM_TAG);
+            if (player.getInventory().contains(stack)) {
+                CompoundTag tag = stack.getOrCreateTag();
+                this.consumptionItem = tag.getInt(CONSUMPTION_ITEM_TAG);
+                
+                if (!Inventory.isHotbarSlot(slot)) {
+                    this.stopFlying(player);
+                } else {
+                    this.flying = player.getAbilities().flying;
 
-            if (!Inventory.isHotbarSlot(slot)) {
-                this.stopFlying(player);
-            } else {
-                this.flying = player.getAbilities().flying;
+                    Item item = ForgeRegistries.ITEMS.getValue(ConfigHandler.COMMON.flightRingProperties.getFlightRingItem());
 
-                Item item = ForgeRegistries.ITEMS.getValue(ConfigHandler.COMMON.flightRingProperties.getFlightRingItem());
-
-                if (this.consuming) {
-                    if (player.getInventory().contains(item.getDefaultInstance()) && this.consumptionItem < ConfigHandler.COMMON.flightRingProperties.maxStorage.get()) {
-                        player.getInventory().removeItem(player.getInventory().findSlotMatchingItem(item.getDefaultInstance()), 1);
-                        this.consumptionItem++;
-                    }
-                }
-
-                if (this.consumptionItem > 0) {
-                    if (!player.getAbilities().mayfly) {
-                        player.getAbilities().mayfly = true;
+                    if (this.consuming) {
+                        if (player.getInventory().contains(item.getDefaultInstance()) && this.consumptionItem < ConfigHandler.COMMON.flightRingProperties.maxStorage.get()) {
+                            player.getInventory().removeItem(player.getInventory().findSlotMatchingItem(item.getDefaultInstance()), 1);
+                            this.consumptionItem++;
+                        }
                     }
 
-                    if (this.isFlying()) {
-                        if (!world.isClientSide()) {
-                            if (this.tick == ConfigHandler.COMMON.flightRingProperties.consumeTicks.get()) {
-                                this.tick = 0;
-                                this.consumptionItem--;
+                    if (this.consumptionItem > 0) {
+                        if (!player.getAbilities().mayfly) {
+                            player.getAbilities().mayfly = true;
+                        }
+
+                        if (this.isFlying()) {
+                            if (!world.isClientSide()) {
+                                if (this.tick == ConfigHandler.COMMON.flightRingProperties.consumeTicks.get()) {
+                                    this.tick = 0;
+                                    this.consumptionItem--;
+                                }
+
+                                this.tick++;
                             }
-
-                            this.tick++;
+                        } else {
+                            if (!world.isClientSide()) {
+                                this.tick = 0;
+                            }
                         }
                     } else {
-                        if (!world.isClientSide()) {
-                            this.tick = 0;
-                        }
+                        this.stopFlying(player);
                     }
-                } else {
-                    this.stopFlying(player);
                 }
-            }
 
-            if (!world.isClientSide()) {
-                tag.putInt(CONSUMPTION_ITEM_TAG, this.consumptionItem);
+                if (!world.isClientSide()) {
+                    tag.putInt(CONSUMPTION_ITEM_TAG, this.consumptionItem);
+                }
             }
         }
     }
