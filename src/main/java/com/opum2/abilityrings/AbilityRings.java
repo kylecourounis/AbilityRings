@@ -9,11 +9,14 @@ import com.opum2.abilityrings.init.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import top.theillusivec4.curios.api.SlotTypeMessage;
 
 @Mod(ModInfo.MOD_ID)
 public class AbilityRings {
@@ -28,6 +31,8 @@ public class AbilityRings {
 
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
+        
+        bus.addListener(this::interModEnqueue);        
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -40,4 +45,8 @@ public class AbilityRings {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {}
+    
+    private void interModEnqueue(final InterModEnqueueEvent event) {
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("ring").size(2).build());
+    }
 }
