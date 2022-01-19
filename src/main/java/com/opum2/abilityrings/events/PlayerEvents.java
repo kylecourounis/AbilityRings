@@ -20,9 +20,11 @@ public class PlayerEvents {
     public static void onPlayerTick(PlayerTickEvent event) {
         Player player = event.player;
         
-        if (!player.getInventory().contains(((FlightRingItem)ModItems.FLIGHT_RING.get()).getDefaultInstance())) {
-            if (player.getAbilities().mayfly) {
-                ((FlightRingItem)ModItems.FLIGHT_RING.get()).stopFlying(player);
+        if (!player.isCreative()) {
+            if (!player.getInventory().contains(((FlightRingItem)ModItems.FLIGHT_RING.get()).getDefaultInstance())) {
+                if (player.getAbilities().mayfly) {
+                    ((FlightRingItem)ModItems.FLIGHT_RING.get()).stopFlying(player);
+                }
             }
         }
         

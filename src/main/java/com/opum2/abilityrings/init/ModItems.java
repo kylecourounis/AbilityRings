@@ -26,7 +26,7 @@ public class ModItems {
     public static final RegistryObject<Item> SWIFTNESS_RING = ITEMS.register("swiftness_ring", () -> new SwiftnessRingItem());
     public static final RegistryObject<Item> FOOD_RING = ITEMS.register("food_ring", () -> new FoodRingItem());
     public static final RegistryObject<Item> HEALING_RING = ITEMS.register("healing_ring", () -> new HealingRingItem());
-
+    
     public static final RegistryObject<Item> RED_ORB = ITEMS.register("red_orb", () -> new ModItem("Red Orb"));
     public static final RegistryObject<Item> BLUE_ORB = ITEMS.register("blue_orb", () -> new ModItem("Blue Orb"));
 
@@ -34,9 +34,9 @@ public class ModItems {
         if (ModItems.initialized) {
             return;
         }
-
+        
         ModItems.ITEMS.register(bus);
-
+        
         ModItems.initialized = true;
     }
 
