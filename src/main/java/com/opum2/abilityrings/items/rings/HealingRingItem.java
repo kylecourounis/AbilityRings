@@ -34,7 +34,7 @@ public class HealingRingItem extends ModRingItem {
                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100));
                 player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100));
             } else {
-                player.removeEffect(MobEffects.SATURATION);
+                player.removeEffect(MobEffects.REGENERATION);
                 player.removeEffect(MobEffects.ABSORPTION);
             }
         }

@@ -10,7 +10,8 @@ public enum AbilityRingsLang {
     ITEM_EXTENDED_TOOLTIP_FLIGHT_RING("item", "flight_ring.tooltip"),
     ITEM_TOOLTIP_SPEED_RING("item", "speed_ring.tooltip"), 
     ITEM_TOOLTIP_FOOD_RING("item", "food_ring.tooltip"),
-    ITEM_TOOLTIP_HEALING_RING("item", "healing_ring.tooltip");
+    ITEM_TOOLTIP_HEALING_RING("item", "healing_ring.tooltip"),
+    ITEM_TOOLTIP_RESISTANCE_RING("item", "resistance_ring.tooltip");
 
     private final String key;
 

@@ -55,7 +55,11 @@ public class FlightRingItem extends ModRingItem {
                     CompoundTag tag = stack.getOrCreateTag();
                     this.consumptionItem = tag.getInt(CONSUMPTION_ITEM_TAG);
                     
-                    if (!Inventory.isHotbarSlot(slot)) {
+                    boolean onlyOffhand = ConfigHandler.COMMON.flightRingProperties.onlyInOffhand.get().booleanValue();
+                    
+                    if (onlyOffhand && !player.getInventory().offhand.get(0).equals(stack)) {
+                        this.stopFlying(player);
+                    } else if (!onlyOffhand && !Inventory.isHotbarSlot(slot)) {
                         this.stopFlying(player);
                     } else {
                         this.flying = player.getAbilities().flying;

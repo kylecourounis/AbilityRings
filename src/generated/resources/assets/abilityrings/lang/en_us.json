@@ -8,6 +8,8 @@
   "item.abilityrings.healing_ring.tooltip": "\u00A7eGives Regeneration & Absorption when placed anywhere in your inventory.",
   "item.abilityrings.hold_shift.tooltip": "\u00A77Hold Shift For Info",
   "item.abilityrings.red_orb": "Red Orb",
+  "item.abilityrings.resistance_ring": "Ring of Resistance",
+  "item.abilityrings.resistance_ring.tooltip": "\u00A7eGives Fire Resistance when placed anywhere in your inventory.\nGives both Resistance & Fire Resistance when placed in the hotbar.",
   "item.abilityrings.ring_base": "Base Ring",
   "item.abilityrings.speed_ring.tooltip": "\u00A7eGives a Speed and Jump Boost, negates fall damage, and gives step-assist when placed in any slot in the your hotbar.",
   "item.abilityrings.swiftness_ring": "Ring of Swiftness",

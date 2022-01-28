@@ -1,4 +1,4 @@
-# AbilityRings
+# AbilityRings (1.17.1)
  
 This is the source code for a Minecraft mod that adds a few rings that buff the player when equipped in the their inventory. 
 

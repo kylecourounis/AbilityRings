@@ -55,7 +55,16 @@ public class AbilityRingsRecipeProvider extends RecipeProvider {
             .define('#', ModItems.RED_ORB.get())
             .unlockedBy("has_red_orb", has(ModItems.RED_ORB.get()))
             .save(recipeConsumer);
-
+        
+        ShapedRecipeBuilder.shaped(ModItems.RESISTANCE_RING.get())
+            .pattern("III")
+            .pattern("I#I")
+            .pattern("III")
+            .define('I', Items.IRON_INGOT)
+            .define('#', Items.TOTEM_OF_UNDYING)
+            .unlockedBy("has_totem_of_undying", has(Items.TOTEM_OF_UNDYING))
+            .save(recipeConsumer);
+        
         ShapedRecipeBuilder.shaped(ModItems.BLUE_ORB.get())
             .pattern("III")
             .pattern("I#I")
