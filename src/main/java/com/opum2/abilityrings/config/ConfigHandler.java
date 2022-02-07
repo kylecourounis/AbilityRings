@@ -4,7 +4,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -25,15 +24,13 @@ public class ConfigHandler {
         public final ConfigValue<String> consumptionItem;
         public final IntValue consumeTicks;
         public final IntValue maxStorage;
-        public final BooleanValue onlyInOffhand;
-
+        
         FlightRingProperties(final ForgeConfigSpec.Builder builder) {
             builder.push("items.flightringproperties");
 
             this.consumptionItem = builder.comment("The item that the Ring of Flight will consume every specified number of ticks.").define("consumptionItem", "minecraft:feather");
             this.consumeTicks = builder.comment("The number of ticks that will pass between the Ring of Flight consuming the specified item.\nThere are twenty ticks in one second.").defineInRange("consumeTicks", 60, 20, Integer.MAX_VALUE);
             this.maxStorage = builder.comment("The maximum number of the item to be consumed that can be held in the Ring of Flight.").defineInRange("maxStorage", 5000, 1, Integer.MAX_VALUE);
-            this.onlyInOffhand = builder.comment("Setting this to true will make it so that the Ring of Flight will only work when placed in the player's offhand.\nBy default, it works in both the hotbar and the offhand.").define("onlyInOffhand", false);
             
             builder.pop();
         }
